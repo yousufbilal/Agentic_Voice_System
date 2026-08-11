@@ -1,0 +1,5 @@
+This repository contains a simple project that sets up a fully local voice assistant using an open-weight 3B LLM. It combines speech recognition, text generation, and audio synthesis to run real-time voice conversations directly on your machine without relying on external cloud APIs.
+
+The pipeline processes user audio using a lightweight Speech-to-Text model, passes the transcript to a fast 3B model running via Ollama for response generation, and streams the output to a local Text-to-Speech engine. Everything runs on-device to ensure privacy and low latency.
+
+Instructions are included for pulling the default Ollama model, setting up the required python packages, and launching the application. Basic settings like voice selection and model tags can be modified directly in the project configuration.
