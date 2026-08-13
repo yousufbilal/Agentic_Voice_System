@@ -4,8 +4,7 @@ The pipeline processes user audio using a lightweight Speech-to-Text model, pass
 
 Instructions are included for pulling the default Ollama model, setting up the required python packages, and launching the application. Basic settings like voice selection and model tags can be modified directly in the project configuration.
 
-tools i will need 
-LLM 
-Conversation memory
-STT (Speech-to-Text): Converts your spoken voice into text input for the LLM.
-TTS (Text-to-Speech): Converts the LLM's text output into spoken audio for you to hear.
+sounddevice — records your voice from the mic
+faster-whisper — this is Whisper, turns your recorded audio into text
+Your local LLM (Llama, Mistral, etc., via Ollama or similar) — reads the text, generates a reply
+piper — turns the reply text into speech, plays it out loud
