@@ -1,18 +1,19 @@
 from faster_whisper import WhisperModel
+import wave
+from pydub import AudioSegment
 
-model_size = "large-v3"
 
-# Run on GPU with FP16
-model = WhisperModel(model_size, device="cuda", compute_type="float16")
+def transcribe_audio():
+    model = WhisperModel("small.en", device="cpu", compute_type="int8")
+    print(" Transcribing...")
+    segments, _ = model.transcribe("output.wav", language="en")
 
-# or run on GPU with INT8
-# model = WhisperModel(model_size, device="cuda", compute_type="int8_float16")
-# or run on CPU with INT8
-# model = WhisperModel(model_size, device="cpu", compute_type="int8")
+    for segment in segments:
+        # print("SEGMETN",segment.text)
+        print(f"[{segment.start:.2f}s - {segment.end:.2f}s] {segment.text.strip()}")
+    print(" Done.\n")
 
-segments, info = model.transcribe("audio.mp3", beam_size=5)
 
-print("Detected language '%s' with probability %f" % (info.language, info.language_probability))
-
-for segment in segments:
-    print("[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
+if __name__ == "__main__":
+    # transcribe_audio("audio")
+    transcribe_audio()

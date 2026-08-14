@@ -6,7 +6,6 @@ seconds = 3  # Duration of recording
 
 print("Testing devices:", sd.query_devices())
 
-
 myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
 sd.wait()  # Wait until recording is finished
 write('output.wav', fs, myrecording)  # Save as WAV file
