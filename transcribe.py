@@ -10,8 +10,12 @@ def transcribe_audio():
 
     for segment in segments:
         # print("SEGMETN",segment.text)
-        print(f"[{segment.start:.2f}s - {segment.end:.2f}s] {segment.text.strip()}")
-    print(" Done.\n")
+        human_speech_text = segment.text.strip()
+
+    #     print(f"[{segment.start:.2f}s - {segment.end:.2f}s] {segment.text.strip()}")
+    # print(" Done.\n")
+
+    return human_speech_text
 
 
 if __name__ == "__main__":
