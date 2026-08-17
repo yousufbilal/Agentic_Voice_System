@@ -8,3 +8,15 @@ sounddevice — records your voice from the mic
 faster-whisper — this is Whisper, turns your recorded audio into text
 Your local LLM (Llama, Mistral, etc., via Ollama or similar) — reads the text, generates a reply
 piper — turns the reply text into speech, plays it out loud
+
+
+
+new GOAL 
+
+wrapped in a loop that keeps repeating:
+
+Record your speech
+Transcribe it
+Send to AI, get response
+Speak the response
+Go back to step 1 and listen again
