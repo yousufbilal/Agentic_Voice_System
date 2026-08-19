@@ -14,18 +14,23 @@ llm = ChatOllama(model="qwen2.5:3b",temperature=0)
 
 def test_agent():
 
-    print("SPEAK:")
+    while True:
 
-    record_audio()
+        print("SPEAK:")
 
-    transcribed_user_audio = transcribe_audio()
+        record_audio()
 
-    system_prompt = SystemMessage(content="you are an anime expert")
-    human_prompt = HumanMessage(content=transcribed_user_audio)
-    response = llm.invoke([system_prompt, human_prompt])
-    print(response.content)
+        transcribed_user_audio = transcribe_audio()
 
-    text_to_speech(response.content)
+        system_prompt = SystemMessage(content="you are a helpful assistant")
+        human_prompt = HumanMessage(content=transcribed_user_audio)
+        response = llm.invoke([system_prompt, human_prompt])
+
+        text_to_speech(response.content)
+
+        if transcribed_user_audio == "exit":
+            
+            break
 
     return response.content
 
