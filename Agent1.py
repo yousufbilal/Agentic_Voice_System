@@ -7,9 +7,6 @@ from speech_to_text import transcribe_audio
 from text_to_speech import text_to_speech
 from record_audio import record_audio
 
-
-
-
 llm = ChatOllama(model="qwen2.5:3b",temperature=0)
 
 def test_agent():
@@ -22,17 +19,17 @@ def test_agent():
 
         transcribed_user_audio = transcribe_audio()
 
-        system_prompt = SystemMessage(content="you are a helpful assistant")
+        if transcribed_user_audio.strip().lower().rstrip(".") == "exit":
+            break
+
+        system_prompt = SystemMessage(content=" 3 word or less answer only")
         human_prompt = HumanMessage(content=transcribed_user_audio)
+
         response = llm.invoke([system_prompt, human_prompt])
 
         text_to_speech(response.content)
 
-        if transcribed_user_audio == "exit":
-            
-            break
 
-    return response.content
 
 
 test_agent()
