@@ -6,7 +6,7 @@ model = WhisperModel("small.en", device="cpu", compute_type="int8")
 
 def transcribe_audio():
     print(" Transcribing...")
-    segments, _ = model.transcribe("output.wav", language="en")
+    segments, _ = model.transcribe("assets/output.wav", language="en")
 
     for segment in segments:
         # print("SEGMETN",segment.text)

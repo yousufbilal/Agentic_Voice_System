@@ -3,9 +3,13 @@ from typing import Literal
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import interrupt, Command, RetryPolicy
 from langchain_core.messages import HumanMessage, SystemMessage
-from speech_to_text import transcribe_audio
-from text_to_speech import text_to_speech
-from record_audio import record_audio
+from my_agent.utils.speech_to_text import transcribe_audio
+from my_agent.utils.text_to_speech import text_to_speech
+from my_agent.utils.record_audio import record_audio
+import webrtcvad
+
+vad = webrtcvad.Vad()
+vad.set_mode(1)
 
 llm = ChatOllama(model="qwen2.5:3b",temperature=0)
 

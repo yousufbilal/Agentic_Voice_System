@@ -4,7 +4,7 @@ from playsound import playsound
 
 
 def text_to_speech (agent_response):
-    voice = PiperVoice.load("en_US-lessac-medium.onnx")
-    with wave.open("Agent.wav", "wb") as wav_file:
+    voice = PiperVoice.load("assets/en_US-lessac-medium.onnx")
+    with wave.open("assets/Agent.wav", "wb") as wav_file:
         voice.synthesize_wav(agent_response, wav_file)
-        playsound("Agent.wav")
+        playsound("assets/Agent.wav")

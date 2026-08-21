@@ -7,7 +7,7 @@ def record_audio():
 
     myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
     sd.wait()  
-    write('output.wav', fs, myrecording)  # Save as WAV file
+    write('assets/output.wav', fs, myrecording)  # Save as WAV file
 
     return myrecording
 
